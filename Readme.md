@@ -278,6 +278,47 @@ This block has many parts to control the process:
 - I/O status info
 ```
  
+## Process Scheduling 
+* We know that the objective of the multiprogramming is the make process run all the times to make the CPU utilization better
+* The objective of the time sharing is that ti switch CPU among process to make the user interact with each process(eg: ms word, spotify running at a same time) . It feels like running at parallel , but actually CPU is switching frequently to each of the proces
+* To satisfy these both objectives ,  the process scheduler selects ann avaliable process for program execution in CPU
+* To chech any process are free or while doing one process  if any high priority process are worked then do that process ,like all these process are done by the Process scheduler
+* Process scheduling have 2 types of Scheduling Queues
+    * Job Queue - It contains all the process which is put into the system . When a process is created, it first enters the job queue.
+    * Ready Queue - We kept the process that are ready and wait to execute 
+![alt text](image-11.png)
+* Like when one process is running , some other high priority task arrives then the current process is sent into the partially executed swapped out process block and the go to the ready queue 
+* And if the current process is send into the I/O waiting procss , the the other process which is ready block is executed and after the I/O operation, the process is sent into the ready block 
+
+## Context Switch
+* context - It contains current state of the particular process
+* When an interrupt occurs, the system needs  to save the current context of the process currently running on the CPU , so that it can restore that context when its process is done , essentially suspending the process and then resuming it
+* The context is represented in the PCB of the process
+* Switching the CPU to another process requires saving the state of the current process (State save) and when you comeback you know from where you need to resume that task (State restore)
+* When we save the state of the one process and we restore the state of another process when one process  is interrupted by another process is calles context switching
+
+```
+When a process is running and being interrupted by another higher-priority process, the context of the current running process is saved into its PCB.
+The task of saving the state of the current running process and restore the state of another process is called context switching.
+Context switching time is an overhead, because the system does nothing usefull while switching (no process in execution)
+Context switching time varies from machine to machine. It depends on the memory speed. Typical speed is about few ms
+```
+## Operation on Processes
+### Process Creation
+* A process can create several new process (via create process system call) , during the execution
+* The creating process is called parent process and the new process are calles the children of the process
+* Each of these process may in turn create other processes ,  which forms a tree of process
+![alt text](image-12.png)
+
+* When a process create a new process , two possibility exists
+    * The parent continue to execute with its children concurrently
+    * The parent waits until some or all of its children have terminated
+* Address space of the new process have 2 possibilities
+    * The child is a duolicate of the parent process 
+    * The child process has a new program loaded into it
+
+neso 22
+
 
 
 
