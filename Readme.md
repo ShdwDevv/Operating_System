@@ -236,22 +236,48 @@ We know that the process communicate with each other , for that purpose we use t
     * How much memory is available
     * What devices are available
     * What operating system options are desired
+### System Boot
+* The process of starting the system by loading the kernel is known as booting the system
+* With the help of bootstrap program or bootstrap loader,the kernel is finded and loaded
+* This program is stored in the the form of ROM  , because ROM is non-volatile memory and it cannot affected by the virus
+* Firmware : It is also a Read Only Memory 
+* In small system , both of the OS and bootstrap program are stored in the ROM , so here the OS is in ROM , it cannot be modified , so to get another OS , we need to change the chip , we also have another way like EPROM(Erasable Programmable Read Only Memory).
+* But in sytem , The bootstrap program is in ROM and OS is in Disk .
+* When the full bootstrap program is loaded , it can travers the entire file system to find the system kernel ,load into memory and start the execution . At this point only we can say our system is **running**.
+## Process Management
+* When the program is inn execution , we can say it as process
+* Thread is a unit of execution within a process , a proces can have one or more than one thread
+![alt text](image-8.png)
+## Process State
+* When the process is exucutes , it will change its state
+* The state is determined by the current activity of the process
+* Each process have the following states    
+    * NEW - NEw process is created
+    * WAIT - The process is waiting for some process to occur
+    * RUNNING - Instruction are being executes
+    * READY - The process is waiting to be assigned cd to a processor
+    * TERMINATED - The process has finished its execution
+![alt text](image-9.png)
+## Process control block
+* It is also called Task control block
+* Each process is represented in the OS by Process Control block
+* Registers : they are registers used for particular purpose
+* Accounting information : Keeps an accout of certain things like the resources ae used by the certain things
+![alt text](image-10.png)
+```
+A process control block is a block located inside the OS.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+This block has many parts to control the process:
+- PID or process number: unique id of the process
+- process state
+- program counter: the address of the next line of instruction of the execution
+- CPU registers: which register being used by the process
+- CPU scheduling info: order of execution of processes
+- memory management
+- account management: info of resources used by the process (memory, CPU, time, I/O devices)
+- I/O status info
+```
+ 
 
 
 
